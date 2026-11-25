@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edf0ed">
+  <title>计算记录 · IATP 南京</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./history.css">
+  <script src="./history.js" defer></script>
+</head>
+<body>
+  <header class="history-header">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">▥</span><strong>IATP</strong><span>南京</span></a>
+    <a class="back-link" href="./">← 返回活动出行分析</a>
+  </header>
+  <main>
+    <div class="page-heading"><p class="eyebrow">分析过程 · 结果留存</p><h1>计算记录</h1><p>查看已提交的活动空间、场所推荐和行程计算，以及对应的条件与结果。</p></div>
+    <section class="history-workspace" aria-label="计算历史">
+      <div class="records-panel">
+        <form id="history-filters" class="filters">
+          <label>计算类型<select id="history-kind"><option value="">全部类型</option><option value="activity-space">活动空间</option><option value="recommendation">场所推荐</option><option value="route-chain">行程路线</option><option value="result-review">结果复核</option></select></label>
+          <label>计算状态<select id="history-status"><option value="">全部状态</option><option value="running">计算中</option><option value="completed">已完成</option><option value="failed">失败</option><option value="cancelled">已取消</option><option value="timed_out">超时</option><option value="interrupted">已中断</option></select></label>
+          <button id="history-refresh" type="submit">刷新记录</button>
+          <button id="review-sample" type="button">复核样例结果</button>
+        </form>
+        <div id="history-list" class="history-list" aria-live="polite" aria-busy="true"><p class="empty-state">正在读取计算记录…</p></div>
+        <div class="pagination"><span id="history-total"></span><div><button id="history-prev" type="button" disabled>上一页</button><span id="history-page">1 / 1</span><button id="history-next" type="button" disabled>下一页</button></div></div>
+      </div>
+      <section id="history-detail" class="detail-panel" aria-label="计算详情" aria-live="polite"><p class="empty-state">选择一条记录，查看计算条件和结果。</p></section>
+    </section>
+    <p class="history-note">预计算样例回放不会新增记录。返回分析页面，修改条件并提交计算后，即可在这里查看；记录保存在当前设备的应用数据中。</p>
+  </main>
+</body>
+</html>

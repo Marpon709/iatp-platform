@@ -1,0 +1,4 @@
+# 随桌面程序的 Python 已安装这些版本；从源码运行时先安装本文件。
+SQLAlchemy==2.0.36
+alembic==1.14.0
+greenlet==3.2.5

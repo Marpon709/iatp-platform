@@ -1,0 +1,8 @@
+{
+  "name": "iatp-platform",
+  "version": "1.0.0",
+  "description": "IATP 活动出行与碳预算分析平台",
+  "author": "IATP",
+  "main": "main.cjs",
+  "private": true
+}

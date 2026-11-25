@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edf0ed"><meta name="description" content="南京城市碳预算、活动出行碳核算与时间预算内的活动场所推荐。">
+  <title>IATP · 南京活动出行碳管理</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="./showcase.css?v=20261102-story2">
+  <script src="./vendor/maplibre-gl.js" defer></script>
+  <link rel="stylesheet" href="./activity-space.css">
+  <script src="./activity-space.js" defer></script>
+  <script src="./showcase.js?v=20261102-story2" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <div id="map" role="img" aria-label="南京三维城市、分段交通路线与碳排放标注"></div>
+  <header class="topbar">
+    <a href="./" class="brand" aria-label="IATP 南京首页"><span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">IATP</span><span class="brand-city">南京</span></a>
+    <div class="product-name">活动 · 出行 · 碳管理</div>
+    <div class="header-actions"><a class="history-link" href="./history.html">计算记录</a><span id="connection-status" class="connection-status">正在连接软件</span><button id="fullscreen" type="button" class="icon-button" aria-label="切换全屏"><span>⛶</span><span class="control-caption">全屏</span></button></div>
+  </header>
+  <aside class="data-panel" aria-label="活动出行分析面板">
+    <nav class="scene-tabs" aria-label="功能导航"><button class="scene-tab active" type="button" data-scene="convenience" aria-pressed="true">生活便利水平</button><button class="scene-tab" type="button" data-scene="allocation" aria-pressed="false">碳预算分配</button><button class="scene-tab" type="button" data-scene="chain" aria-pressed="false">我的一天</button></nav>
+    <div id="panel-content" class="panel-content"><div class="panel-loading"><i class="loading-orbit"></i><p>正在读取城市与行程数据</p></div></div>
+    <div class="panel-footnote"><span>从城市，到每一次出行</span><b>IATP / NANJING</b></div>
+  </aside>
+  <div class="map-topline"><div class="map-location"><span class="location-mark">⌖</span><span id="map-region">南京市域</span></div><span id="selected-scheme-label" class="selected-scheme-label">CARBON ALLOCATION</span></div>
+  <div id="map-status" class="map-status" role="status"><i class="loading-orbit"></i>正在加载南京三维场景</div>
+  <div class="map-tools" role="group" aria-label="地图工具">
+    <button id="view-toggle" type="button" title="切换三维或俯视" aria-label="切换俯视"><span data-icon="view"></span></button>
+    <button id="reset-view" type="button" title="恢复场景视角" aria-label="恢复场景视角"><span data-icon="locate"></span></button>
+    <button id="budget-layer-toggle" type="button" aria-pressed="true" title="碳预算图层" aria-label="碳预算图层"><span data-icon="layers"></span></button>
+    <button id="budget-view-toggle" type="button" aria-pressed="true" title="全市与街区" aria-label="切换全市与街区"><span data-icon="grid"></span></button>
+    <button id="motion-toggle" type="button" aria-pressed="true" title="暂停路线动效" aria-label="切换路线动效"><span data-icon="arrow"></span></button>
+    <button id="city-map-toggle" type="button" aria-pressed="false" title="在线地图背景" aria-label="在线地图背景"><span data-icon="view"></span></button>
+  </div>
+  <aside id="resident-calculation-card" class="resident-calculation-card" hidden aria-label="活动贡献计算"></aside>
+  <div id="allocation-map-key" class="allocation-map-key" aria-label="地图计算关系说明"></div>
+  <div id="legend" class="map-legend" aria-label="地图图例"></div>
+  <div id="space-steps" class="space-steps" hidden role="group" aria-label="活动空间展示步骤"><button type="button" data-space-step="0">路线与范围</button><span>→</span><button type="button" data-space-step="1">偏好设施</button><span>→</span><button type="button" data-space-step="2" class="active">可达性得分</button></div>
+  <aside id="space-result" class="space-result" hidden aria-label="沿途可达性结果"></aside>
+  <div id="space-legend" class="space-legend" hidden aria-label="活动空间图例"></div>
+  <section id="history-stage" hidden aria-label="计算记录与结果校验"><iframe id="history-frame" title="计算记录与结果校验"></iframe></section>
+  <section class="scene-caption" aria-label="当前展示结论"><div class="scene-caption-rule"></div><div><h1 id="scene-title">让碳预算，落到城市空间</h1><p id="scene-subtitle">南京市域 · 人均日碳预算分布</p></div></section>
+  <div class="playback" aria-label="播放控制"><button id="play-toggle" class="play-button" type="button" aria-label="播放展示"><span id="play-glyph" class="play-glyph" aria-hidden="true">▶</span><span id="pause-glyph" class="pause-glyph" aria-hidden="true" hidden>Ⅱ</span></button><button id="replay" class="replay-button" type="button" aria-label="重新播放">↺</button><div class="timeline-area"><label class="sr-only" for="timeline">展示进度（秒）</label><input id="timeline" type="range" min="0" max="50" step="0.01" value="0"><div class="timeline-chapters" aria-hidden="true"><span>活动空间与预算</span><span>出行与活动推荐</span><span>计算记录与校验</span></div></div><div class="playback-time"><span id="elapsed">00.0</span><span class="time-divider">/</span><span>50.0 s</span></div></div>
+  <div id="map-source-note" class="map-source-note">南京市域 · 建成区三维概览</div>
+</div>
+</body>
+</html>
